@@ -8,6 +8,8 @@ import styles from '../styles/search.module.css'
 
 // TODO: destructure query from argument passed to getServerSideProps
 export async function getServerSideProps({ query }) {
+  const props = {};
+  if (!query.q) return { props };
   const recipes = await searchRecipes(query.q)
   // TODO: use searchRecipes to attach recipes prop based on query parameter
   return { props: { recipes } }
